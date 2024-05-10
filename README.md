@@ -1,17 +1,9 @@
-## Foundry
+# awesome_solidity
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## src
 
-Foundry consists of:
+项目源码：每个文件夹下对应一个 Solidity 要点，比如 `upgradeable_constract` 为可升级合约
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
 
 ## Usage
 
@@ -64,4 +56,3 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
-# awesome_solidity

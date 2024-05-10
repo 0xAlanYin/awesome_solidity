@@ -3,4 +3,11 @@ src = "src"
 out = "out"
 libs = ["lib"]
 
+# set solidity compiler version
+solc_version="0.8.25"
+
+# set opmitizer
+opmitizer=true
+opmitizer_runs=200
+
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
