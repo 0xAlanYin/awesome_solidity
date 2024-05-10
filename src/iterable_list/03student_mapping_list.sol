@@ -48,9 +48,13 @@ contract StudentMappingList {
         size--;
     }
 
+    // 更优的方案：需要离线查询待删除学生的前置学生地址
     function removeStudentV2(address removeStudent, address preStudent) external {
         // check if student is already exist
         require(isStudentBelongSchool(removeStudent), "remove student not exist");
+        
+        // 入参校验
+        require(_nextStudents[preStudent] == removeStudent, "preStudent is not pre of removeStudent");
 
         // 删除节点
         _nextStudents[preStudent] = _nextStudents[removeStudent];
@@ -79,4 +83,5 @@ contract StudentMappingList {
         // 找不到返回 0 地址
         return address(0);
     }
+
 }
