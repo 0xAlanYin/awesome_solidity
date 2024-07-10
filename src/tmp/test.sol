@@ -2,6 +2,8 @@
 pragma solidity 0.8.25;
 
 import "../foundry_test/Wallet.sol";
+import {MessageHashUtils} from "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
+import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 
 contract TempContract {
     address a;
@@ -75,8 +77,37 @@ contract TempContract {
         START,
         END
     }
+
+    function name() public view returns (string memory) {
+        return string.concat("aa", "-bvb");
+    }
+
+    bytes32 private constant TYPE_HASH =
+        keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)");
+
+    function name2() external {
+        bytes32 permitHash =
+            keccak256("Permit(address owner,address sepender,uint256 value,uint256 nonce,unit256 deadline)");
+        // EIP712Domain(string name,string version,uint256 chainId,address verifyingContract);
+        // abi.encode(arg);
+        type(uint256).max;
+        // ecrecover(hash, v, r, s)
+    }
+
+    function _buildDomianSeperator() private view returns (bytes32) {
+        bytes32 domainSeperator = keccak256(abi.encode(TYPE_HASH, "_name", "_version", block.chainid, address(this)));
+        return domainSeperator;
+    }
+
+    function _hashTypeData(bytes32 structHash) private view returns (bytes32) {
+        // ECDSA.recover(hash, signature);
+        type(TempContract).creationCode;
+        return MessageHashUtils.toTypedDataHash(_buildDomianSeperator(), structHash);
+    }
+
+    function name() private {
+        bytes4 functionSelector = bytes4(keccak256(bytes("transfer(address,uint256)")));
+    }
 }
 
-interface Name {
-    
-}
+interface Name {}
